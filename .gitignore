@@ -3,6 +3,7 @@ target/
 !**/src/test/**/target/
 
 # IDEA
+.bsp/
 .idea/
 *.iml
 .idea_modules

@@ -1,10 +1,9 @@
 package com.github.atais
 
+import com.github.atais.FakeServer.HttpServer
 import zio.http._
 import zio.test.ZIOSpec
 import zio.{Fiber, ZIO, ZLayer}
-
-import FakeServer.HttpServer
 
 object FakeServer {
   type HttpServer = Fiber.Runtime[Throwable, Nothing]
@@ -18,7 +17,7 @@ trait FakeServer extends ZIOSpec[HttpServer] {
         Server
           .serve(Routes(Method.GET / "test" -> handler {
             Response.text("test")
-          }).toHttpApp)
+          }).toHttpApp @@ Middleware.debug)
           .provide(Server.default)
           .fork
     } { server =>

@@ -9,6 +9,7 @@ lazy val root = (project in file("."))
     name := "zio-http-e2e-test",
     libraryDependencies ++= Seq(
       "dev.zio" %% "zio-http" % "3.0.0-RC4",
+      "com.squareup.okhttp3" % "okhttp" % "4.12.0",
       "dev.zio" %% "zio-test-sbt" % ZioVersion % Test
     )
   )
