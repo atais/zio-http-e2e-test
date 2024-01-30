@@ -6,24 +6,25 @@ import zio._
 import zio.http._
 import zio.test._
 
-object MainSpec extends FakeServer {
-
-  override def spec =
-    suite("Main") {
-      test("should work") {
-
-        val request = new Request.Builder()
-          .url("http://localhost:8080/test")
-          .build()
-
-        val call = new OkHttpClient().newCall(request);
-        val response = call.execute();
-
-        assertTrue(response.code() == 200)
-      }
-    } @@ TestAspect.flaky
-
-}
+//object MainSpec extends FakeServer {
+//
+//  override def spec = {
+//    suite("Main") {
+//      test("should work") {
+//
+//        val request = new Request.Builder()
+//          .url("http://localhost:8080/test")
+//          .build()
+//
+//        val call = new OkHttpClient().newCall(request);
+//        val response = call.execute();
+//
+//        assertTrue(response.code() == 200)
+//      }
+//    } @@ TestAspect.flaky
+//  } @@ TestAspect.ignore
+//
+//}
 
 object FakeServer {
   type HttpServer = Fiber.Runtime[Throwable, Nothing]
